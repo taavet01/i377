@@ -1,1 +1,5 @@
 /build
+/lib
+/WebContent/WEB-INF/lib
+*.war
+.DS_Store
