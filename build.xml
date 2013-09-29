@@ -12,7 +12,7 @@
 	<property name="war.file" location="${build.dir}/taavet01.war" />
 
 	<path id="classpath">
-		<fileset dir="lib">
+		<fileset dir="${basedir}/lib">
 			<include name="*.jar" />
 		</fileset>
 		<fileset dir="${dir.lib}">
