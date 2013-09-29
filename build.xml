@@ -8,7 +8,7 @@
 	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]-[revision].[ext]" />
 	
-	<property name="webContent.dir" location="WebContent" />
+	<property name="webcontent.dir" location="WebContent" />
 	<property name="war.file" location="${build.dir}/taavet01.war" />
 
 	<path id="classpath">
@@ -21,11 +21,9 @@
 	</path>
 	
 	<target name="retrieve" description="retreive dependencies">
-
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath" />
 		<ivy:resolve file="${basedir}/ivy.xml" log="download­only" />
 		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
-
 	</target>
 
 	<target name="war" depends="compile">
@@ -35,8 +33,8 @@
 		</war>
 	</target>
 	
-	<target name="compile" depends="clean, init">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
+	<target name="compile" depends="clean, init, retrieve">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false" classpathref="classpath"/>
 	</target>
 
 	<target name="init">
